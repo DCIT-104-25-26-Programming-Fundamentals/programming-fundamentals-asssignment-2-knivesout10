@@ -51,3 +51,68 @@
 #include <iostream>
 using namespace std;
 
+// PROGRAMMING FUNDAMENTALS — Assignment 5
+// =============================================================================
+// TASK: Fibonacci Sequence Generator
+// =============================================================================
+
+#include <iostream>
+using namespace std;
+
+// PART A: Print the first N terms of the Fibonacci sequence
+void printFibonacci(int n) {
+    if (n <= 0) {
+        cout << "Error: Number of terms must be a positive integer." << endl;
+        return;
+    }
+
+    long long a = 0, b = 1;
+
+    cout << "Fibonacci sequence: ";
+    for (int i = 0; i < n; i++) {
+        cout << a << " ";
+        long long nextTerm = a + b;
+        a = b;
+        b = nextTerm;
+    }
+    cout << endl;
+}
+
+// PART B: Check if a given number belongs to the Fibonacci sequence
+bool isFibonacci(long long num) {
+    if (num < 0) {
+        return false;
+    }
+
+    long long a = 0, b = 1;
+
+    while (a < num) {
+        long long nextTerm = a + b;
+        a = b;
+        b = nextTerm;
+    }
+
+    return a == num;
+}
+
+int main() {
+    int n;
+    cout << "--- PART A: Print First N Terms ---\n";
+    cout << "How many terms? ";
+    cin >> n;
+
+    printFibonacci(n);
+
+    cout << "\n--- PART B: Check Fibonacci Number ---\n";
+    long long numToCheck;
+    cout << "Enter a number to check: ";
+    cin >> numToCheck;
+
+    if (isFibonacci(numToCheck)) {
+        cout << numToCheck << " is a Fibonacci number." << endl;
+    } else {
+        cout << numToCheck << " is NOT a Fibonacci number." << endl;
+    }
+
+    return 0;
+}

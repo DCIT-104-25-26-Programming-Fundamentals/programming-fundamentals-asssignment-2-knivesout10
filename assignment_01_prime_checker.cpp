@@ -37,3 +37,43 @@
 #include <iostream>
 using namespace std;
 
+// PROGRAMMING FUNDAMENTALS — Assignment 1
+// =============================================================================
+// TASK: Prime Number Checker
+// =============================================================================
+
+#include <iostream>
+using namespace std;
+
+// Function to check if a number is prime
+bool isPrime(int n) {
+    // Numbers less than 2 are NOT prime
+    if (n < 2) {
+        return false;
+    }
+
+    // Check for divisors from 2 up to n - 1
+    for (int i = 2; i < n; i++) {
+        if (n % i == 0) {
+            return false; // Found a factor, so it's not prime
+        }
+    }
+
+    return true; // No factors found, so it is prime
+}
+
+int main() {
+    int num;
+
+    cout << "Enter a number: ";
+    cin >> num;
+
+    // Call the isPrime function and display appropriate message
+    if (isPrime(num)) {
+        cout << num << " is a prime number." << endl;
+    } else {
+        cout << num << " is NOT a prime number." << endl;
+    }
+
+    return 0;
+}

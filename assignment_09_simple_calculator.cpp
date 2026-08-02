@@ -73,3 +73,130 @@
 #include <cmath>
 using namespace std;
 
+// PROGRAMMING FUNDAMENTALS — Assignment 9
+// =============================================================================
+// TASK: Console-Based Simple Calculator
+// =============================================================================
+
+#include <iostream>
+#include <iomanip>
+#include <cmath>
+using namespace std;
+
+// 1. Addition
+double add(double a, double b) {
+    return a + b;
+}
+
+// 2. Subtraction
+double subtract(double a, double b) {
+    return a - b;
+}
+
+// 3. Multiplication
+double multiply(double a, double b) {
+    return a * b;
+}
+
+// 4. Division
+bool divide(double a, double b, double& result) {
+    if (b == 0) {
+        return false; // Error: division by zero
+    }
+    result = a / b;
+    return true;
+}
+
+// 5. Modulus
+bool modulus(int a, int b, int& result) {
+    if (b == 0) {
+        return false; // Error: modulus by zero
+    }
+    result = a % b;
+    return true;
+}
+
+// 6. Exponentiation
+double power(double base, double exp) {
+    return pow(base, exp);
+}
+
+// Function to display the menu
+void displayMenu() {
+    cout << "\n============================\n";
+    cout << "     SIMPLE CALCULATOR      \n";
+    cout << "============================\n";
+    cout << "1. Addition\n";
+    cout << "2. Subtraction\n";
+    cout << "3. Multiplication\n";
+    cout << "4. Division\n";
+    cout << "5. Modulus\n";
+    cout << "6. Exponentiation\n";
+    cout << "7. Quit\n";
+    cout << "Select an operation (1-7): ";
+}
+
+int main() {
+    int choice = 0;
+
+    while (choice != 7) {
+        displayMenu();
+        cin >> choice;
+
+        if (choice >= 1 && choice <= 6) {
+            double num1, num2;
+            cout << "Enter first number : ";
+            cin >> num1;
+            cout << "Enter second number: ";
+            cin >> num2;
+
+            cout << fixed << setprecision(2);
+
+            switch (choice) {
+                case 1:
+                    cout << "Result: " << num1 << " + " << num2 << " = " << add(num1, num2) << endl;
+                    break;
+
+                case 2:
+                    cout << "Result: " << num1 << " - " << num2 << " = " << subtract(num1, num2) << endl;
+                    break;
+
+                case 3:
+                    cout << "Result: " << num1 << " * " << num2 << " = " << multiply(num1, num2) << endl;
+                    break;
+
+                case 4: {
+                    double result;
+                    if (divide(num1, num2, result)) {
+                        cout << "Result: " << num1 << " / " << num2 << " = " << result << endl;
+                    } else {
+                        cout << "Error: Cannot divide by zero." << endl;
+                    }
+                    break;
+                }
+
+                case 5: {
+                    int int1 = static_cast<int>(num1);
+                    int int2 = static_cast<int>(num2);
+                    int result;
+                    if (modulus(int1, int2, result)) {
+                        cout << "Result: " << int1 << " % " << int2 << " = " << result << endl;
+                    } else {
+                        cout << "Error: Cannot perform modulus by zero." << endl;
+                    }
+                    break;
+                }
+
+                case 6:
+                    cout << "Result: " << num1 << " ^ " << num2 << " = " << power(num1, num2) << endl;
+                    break;
+            }
+        } else if (choice == 7) {
+            cout << "Goodbye!" << endl;
+        } else {
+            cout << "Invalid choice! Please select a valid option between 1 and 7." << endl;
+        }
+    }
+
+    return 0;
+}

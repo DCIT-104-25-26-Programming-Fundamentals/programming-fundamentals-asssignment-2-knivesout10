@@ -57,3 +57,65 @@
 #include <iostream>
 using namespace std;
 
+// PROGRAMMING FUNDAMENTALS — Assignment 6
+// =============================================================================
+// TASK: Multiplication Table Generator
+// =============================================================================
+
+#include <iostream>
+using namespace std;
+
+// PART A: Print a single multiplication table from 1 to 12
+void printSingleTable(int num) {
+    if (num <= 0) {
+        cout << "Error: Number must be a positive integer." << endl;
+        return;
+    }
+
+    cout << "\nMultiplication Table for " << num << ":\n";
+    for (int i = 1; i <= 12; i++) {
+        cout << num << "  x  " << i << "  =  " << (num * i) << endl;
+    }
+}
+
+// PART B: Print multiplication tables for numbers 1 to N
+void printMultipleTables(int n) {
+    if (n <= 0) {
+        cout << "Error: N must be a positive integer." << endl;
+        return;
+    }
+
+    for (int i = 1; i <= n; i++) {
+        printSingleTable(i);
+        if (i < n) {
+            cout << "---------------------------" << endl;
+        }
+    }
+}
+
+int main() {
+    int choice;
+    cout << "===========================================\n";
+    cout << "     MULTIPLICATION TABLE GENERATOR        \n";
+    cout << "===========================================\n";
+    cout << "1. Part A: Single Table\n";
+    cout << "2. Part B: Tables from 1 to N\n";
+    cout << "Choose an option (1-2): ";
+    cin >> choice;
+
+    if (choice == 1) {
+        int num;
+        cout << "Enter a number: ";
+        cin >> num;
+        printSingleTable(num);
+    } else if (choice == 2) {
+        int n;
+        cout << "Enter N: ";
+        cin >> n;
+        printMultipleTables(n);
+    } else {
+        cout << "Invalid choice program exiting." << endl;
+    }
+
+    return 0;
+}
